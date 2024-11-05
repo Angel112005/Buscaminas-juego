@@ -67,20 +67,17 @@ export class GameService {
   }
 
   private revealEmptyCells(row: number, col: number): void {
-    // Evita revelar fuera del grid o celdas ya reveladas
     if (row < 0 || row >= this.gridSize || col < 0 || col >= this.gridSize || this.grid[row][col].isRevealed) {
       return;
     }
 
-    // Revela la celda
+
     this.grid[row][col].isRevealed = true;
 
-    // Si la celda tiene minas cercanas, detiene la recursión
     if (this.grid[row][col].nearbyMines > 0) {
       return;
     }
 
-    // Llama a la función recursivamente en las celdas adyacentes
     for (let i = -1; i <= 1; i++) {
       for (let j = -1; j <= 1; j++) {
         if (i !== 0 || j !== 0) {

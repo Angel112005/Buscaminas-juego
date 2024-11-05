@@ -1,4 +1,3 @@
-// src/app/components/grid/grid.component.ts
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { Cell } from '../../models/cell';
