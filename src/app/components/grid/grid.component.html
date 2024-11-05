@@ -1,0 +1,23 @@
+<!-- src/app/components/grid/grid.component.html -->
+<div class="container">
+  <div class="grid">
+    <div
+      *ngFor="let row of grid; let i = index"
+      class="row"
+    >
+      <div
+        *ngFor="let cell of row; let j = index"
+        class="cell"
+        [ngClass]="{ revealed: cell.isRevealed, mine: cell.isMine && gameover }"
+        (click)="onCellClick(i, j)"
+      >
+        <span *ngIf="cell.isRevealed && cell.nearbyMines > 0">{{ cell.nearbyMines }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="gameover" class="gameover">
+    <p>Game Over!</p>
+    <button (click)="startNewGame()">Reiniciar Juego</button>
+  </div>
+</div>
